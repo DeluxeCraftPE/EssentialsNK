@@ -37,7 +37,7 @@ permissions:
   essentialsnk.feed.others:
     default: op
   essentialsnk.fly:
-    default: op
+    default: true
   essentialsnk.fly.others:
     default: op
   essentialsnk.gamemode:
