@@ -23,27 +23,27 @@ public class FlyCommand extends CommandBase {
 
     public boolean execute(CommandSender sender, String label, String[] args) {
         if (!this.testPermission(sender)) {
-            return false;
+            return true;
         }
         if (args.length > 1) {
             this.sendUsage(sender);
-            return false;
+            return true;
         }
         Player player;
         if (args.length == 0) {
             if (!this.testIngame(sender)) {
-                return false;
+                return true;
             }
             player = (Player) sender;
         } else {
             if (!sender.hasPermission("essentialsnk.fly.others")) {
                 this.sendPermissionMessage(sender);
-                return false;
+                return true;
             }
             player = api.getServer().getPlayer(args[0]);
             if (player == null) {
                 sender.sendMessage(TextFormat.RED + Language.translate("commands.generic.player.notfound", args[0]));
-                return false;
+                return true;
             }
         }
         String enabled = Language.translate(api.switchCanFly(player) ? "commands.generic.enabled" : "commands.generic.disabled");
